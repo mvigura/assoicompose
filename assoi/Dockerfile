@@ -9,7 +9,8 @@ RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -
 
 # install
 RUN apt update
-RUN apt install -y nodejs \
+RUN apt install -y git \
+    nodejs \
     python \
     libkrb5-dev \
     libcairo2-dev \
@@ -26,4 +27,4 @@ RUN npm i -g pm2
 RUN npm install -g gitbook-cli
 RUN wget -nv -O- https://raw.githubusercontent.com/kovidgoyal/calibre/master/setup/linux-installer.py | python -c "import sys; main=lambda:sys.stderr.write('Download failed\n'); exec(sys.stdin.read()); main()"
 
-CMD
+CMD /bin/bash

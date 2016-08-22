@@ -1,37 +1,43 @@
 version: '2'
 services:
     assoi:
-        build:
-            context: ./assoi
-        entrypoint:
+        restart: on-failure
+        build: ./assoi
         expose:
             - "4129"
         links:
-            - assoi-redis
-            - assoi-postgres
-            - assoi-mongo
-            - assoi-rabbit
+            - assoi-redis:redis
+            - assoi-postgres:postgres
+            - assoi-mongo:mongo
+            - assoi-rabbit:rabbit
         volumes:
             - ./ugmk:/www
+        stdin_open: true
+        tty: true
     assoi-redis:
         image: redis:latest
+        restart: on-failure
     assoi-postgres:
         image: postgres:latest
+        restart: on-failure
         environment:
             - PGDATA=/var/lib/postgresql/data/vol
         volumes:
             - ./postgres/data:/var/lib/postgresql/data/vol
     assoi-mongo:
         image: mongo:latest
+        restart: on-failure
         volumes:
             - ./mongo/data:/data/db
     assoi-rabbit:
         image: rabbitmq:3
+        restart: on-failure
         environment:
            - RABBITMQ_DEFAULT_USER=jet
            - RABBITMQ_DEFAULT_PASS=jetparole12j
     assoi-nginx:
         image: nginx:stable
+        restart: on-failure
         links:
             - assoi
         ports:
@@ -39,6 +45,6 @@ services:
         volumes:
             - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
             - ./ugmk:/www:ro
-            - ./nginx/log/access.log:/var/log/nginx/access.log
-            - ./nginx/log/error.log:/var/log/nginx/error.log
+            # - ./nginx/log/access.log:/var/log/nginx/access.log
+            # - ./nginx/log/error.log:/var/log/nginx/error.log
         command: /bin/bash -c "nginx -g 'daemon off;'"
