@@ -17,8 +17,14 @@ services:
         image: redis:latest
     assoi-postgres:
         image: postgres:latest
+        environment:
+            - PGDATA=/var/lib/postgresql/data/vol
+        volumes:
+            - ./postgres/data:/var/lib/postgresql/data/vol
     assoi-mongo:
         image: mongo:latest
+        volumes:
+            - ./mongo/data:/data/db
     assoi-rabbit:
         image: rabbitmq:3
         environment:
