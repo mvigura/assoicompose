@@ -1,0 +1,38 @@
+version: '2'
+services:
+    assoi:
+        build:
+            context: ./assoi
+        entrypoint:
+        expose:
+            - "4129"
+        links:
+            - assoi-redis
+            - assoi-postgres
+            - assoi-mongo
+            - assoi-rabbit
+        volumes:
+            - ./ugmk:/www
+    assoi-redis:
+        image: redis:latest
+    assoi-postgres:
+        image: postgres:latest
+    assoi-mongo:
+        image: mongo:latest
+    assoi-rabbit:
+        image: rabbitmq:3
+        environment:
+           - RABBITMQ_DEFAULT_USER=jet
+           - RABBITMQ_DEFAULT_PASS=jetparole12j
+    assoi-nginx:
+        image: nginx:stable
+        links:
+            - assoi
+        ports:
+            - "8080:80"
+        volumes:
+            - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+            - ./ugmk:/www:ro
+            - ./nginx/log/access.log:/var/log/nginx/access.log
+            - ./nginx/log/error.log:/var/log/nginx/error.log
+        command: /bin/bash -c "nginx -g 'daemon off;'"

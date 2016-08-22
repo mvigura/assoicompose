@@ -1,0 +1,3 @@
+[submodule "ugmk"]
+	path = ugmk
+	url = https://qwemaze@bitbucket.org/zubra12/ugmk.git
