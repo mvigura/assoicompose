@@ -12,6 +12,9 @@
 1. ```cd /path/to/ugmkcompose```
 1. ```sudo docker-compose up --build```
 
+## Import db
+1. TODO
+
 ## Down
 1. ```cd /path/to/ugmkcompose```
 1. ```sudo docker-compose down```

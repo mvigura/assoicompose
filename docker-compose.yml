@@ -12,8 +12,6 @@ services:
             - assoi-rabbit:rabbit
         volumes:
             - ./ugmk:/www
-        # stdin_open: true
-        # tty: true
         working_dir: /www
         command: npm start
     assoi-redis:
