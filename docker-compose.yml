@@ -1,7 +1,7 @@
 version: '2'
 services:
     assoi:
-        restart: on-failure
+        restart: unless-stopped
         build: ./assoi
         expose:
             - "4129"
@@ -16,28 +16,30 @@ services:
         command: npm start
     assoi-redis:
         image: redis:latest
-        restart: on-failure
+        restart: unless-stopped
     assoi-postgres:
         image: postgres:latest
-        restart: on-failure
+        restart: unless-stopped
         environment:
             - PGDATA=/var/lib/postgresql/data/vol
         volumes:
             - ./postgres/data:/var/lib/postgresql/data/vol
+            - ./postgres/assoi.dump:/var/lib/postgresql/assoi.dump:ro
+            - ./postgres/import.sh:/var/lib/postgresql/import.sh:ro
     assoi-mongo:
         image: mongo:latest
-        restart: on-failure
+        restart: unless-stopped
         volumes:
             - ./mongo/data:/data/db
     assoi-rabbit:
         image: rabbitmq:3-management
-        restart: on-failure
+        restart: unless-stopped
         environment:
            - RABBITMQ_DEFAULT_USER=jet
            - RABBITMQ_DEFAULT_PASS=jetparole12j
     assoi-nginx:
         image: nginx:stable
-        restart: on-failure
+        restart: unless-stopped
         links:
             - assoi
         ports:

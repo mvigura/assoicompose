@@ -9,17 +9,24 @@
 1. ```git clone --recursive git@github.com:qwemaze/assoicompose.git```
 1. ```cd assoicompose/ugmk```
 1. ```git checkout container```
+1. ```cd ..```
+1. create path ```postgres/data/```
+1. create path ```mongo/data/```
+
+## Import db
+1. ```cd /path/to/assoicompose```
+1. ```sudo docker-compose down```
+1. remove contents of ```postgres/data/```
+1. remove contents of ```mongo/data/```
+1. copy dump file to ```postgres/assoi.dump```
+1. ```sudo docker-compose up -d assoi-postgres assoi-mongo```
+1. ```sudo docker-compose exec assoi-postgres /bin/bash -c '/var/lib/postgresql/import.sh'```
+1. ```sudo docker-compose run -w /www assoi /bin/bash -c 'node install.js'```
+1. ```sudo docker-compose stop```
 
 ## Up
 1. ```cd /path/to/assoicompose```
-1. ```sudo docker-compose up --build```
-
-## Import db
-1. TODO
-
-## Down
-1. ```cd /path/to/assoicompose```
-1. ```sudo docker-compose down```
+1. ```sudo docker-compose up -d```
 
 ## HALPH
 - ```sudo docker-compose --help```
