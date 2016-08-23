@@ -32,7 +32,7 @@ services:
         volumes:
             - ./mongo/data:/data/db
     assoi-rabbit:
-        image: rabbitmq:3
+        image: rabbitmq:3-management
         restart: on-failure
         environment:
            - RABBITMQ_DEFAULT_USER=jet
@@ -45,6 +45,7 @@ services:
         ports:
             - "8080:80"
         volumes:
-            - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+            # - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+            - ./nginx/conf.d:/etc/nginx/conf.d:ro
             - ./ugmk:/www:ro
         command: /bin/bash -c "nginx -g 'daemon off;'"

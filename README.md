@@ -4,12 +4,20 @@
 - git
 - [Docker](https://docs.docker.com/engine/installation/)
 
-## Run
-1. git clone --recursive https://qwemaze@bitbucket.org/ugmkdock/ugmkcompose.git
-1. cd ugmkcompose
-2. sudo docker-compose up
+## Installation
+1. ```git clone --recursive https://qwemaze@bitbucket.org/ugmkdock/ugmkcompose.git```
+
+## Up
+1. ```cd /path/to/ugmkcompose```
+1. ```sudo docker-compose up --build```
+
+## Down
+1. ```cd /path/to/ugmkcompose```
+1. ```sudo docker-compose down```
 
 ## HALPH
-- sudo docker-compose --help
+- ```sudo docker-compose --help```
+- ```sudo docker --help```
 - Google
-- qwelias@gmail.com
+- [Elias Baryshnikov](mailto:qwelias@gmail.com)
+- maintainer of ```/path/to/ugmkcompose/ugmk``` submodule is dkoviazin@gmail.com
