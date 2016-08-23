@@ -14,6 +14,8 @@ services:
             - ./ugmk:/www
         stdin_open: true
         tty: true
+        working_dir: /www
+        command: npm start
     assoi-redis:
         image: redis:latest
         restart: on-failure
