@@ -21,8 +21,8 @@
 1. copy dump file to ```postgres/assoi.dump```
 1. ```sudo docker-compose up -d assoi-postgres assoi-mongo```
 1. ```sudo docker-compose exec assoi-postgres /bin/bash -c '/var/lib/postgresql/import.sh'```
-1. ```sudo docker-compose run -w /www assoi /bin/bash -c 'node install.js'```
-1. ```sudo docker-compose stop```
+1. ```sudo docker-compose run -w /www assoi /bin/bash -c 'npm i && node install.js'```
+1. ```sudo docker-compose down```
 
 ## Up
 1. ```cd /path/to/assoicompose```
