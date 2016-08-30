@@ -1,3 +1,4 @@
 [submodule "ugmk"]
 	path = ugmk
 	url = https://bitbucket.org/zubra12/ugmk.git
+	branch = container

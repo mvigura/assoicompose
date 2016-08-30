@@ -7,9 +7,6 @@
 ## Installation
 1. ```cd /path/to/working/directory```
 1. ```git clone --recursive git@github.com:qwemaze/assoicompose.git```
-1. ```cd assoicompose/ugmk```
-1. ```git checkout container```
-1. ```cd ..```
 1. create path ```postgres/data/```
 1. create path ```mongo/data/```
 
