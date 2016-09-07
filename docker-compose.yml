@@ -17,6 +17,9 @@ services:
     assoi-redis:
         image: redis:latest
         restart: unless-stopped
+        networks: 
+            default:
+                ipv4_address: 172.18.0.3
     assoi-postgres:
         image: postgres:latest
         restart: unless-stopped
@@ -26,11 +29,18 @@ services:
             - ./postgres/data:/var/lib/postgresql/data/vol
             - ./postgres/assoi.dump:/var/lib/postgresql/assoi.dump:ro
             - ./postgres/import.sh:/var/lib/postgresql/import.sh:ro
+        networks: 
+            default:
+                ipv4_address: 172.18.0.5
     assoi-mongo:
         image: mongo:latest
         restart: unless-stopped
         volumes:
             - ./mongo/data:/data/db
+            - ./mongo/dump:/dump
+        networks: 
+            default:
+                ipv4_address: 172.18.0.4
     assoi-rabbit:
         image: rabbitmq:3-management
         restart: unless-stopped
@@ -49,3 +59,9 @@ services:
             - ./nginx/conf.d:/etc/nginx/conf.d:ro
             - ./ugmk:/www:ro
         command: /bin/bash -c "nginx -g 'daemon off;'"
+networks:
+    default:
+        driver: bridge
+        ipam:
+            config:
+                - subnet: 172.18.0.0/24
