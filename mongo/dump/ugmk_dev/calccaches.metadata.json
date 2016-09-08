@@ -1,1 +1,0 @@
-{"options":{},"indexes":[{"v":1,"key":{"_id":1},"name":"_id_","ns":"ugmk_dev.calccaches"},{"v":1,"unique":true,"key":{"Cell":1},"name":"Cell_1","ns":"ugmk_dev.calccaches","background":true},{"v":1,"key":{"Priority":1},"name":"Priority_1","ns":"ugmk_dev.calccaches","background":true}]}

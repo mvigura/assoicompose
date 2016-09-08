@@ -3,12 +3,11 @@
 ## Prerequisites
 - git
 - [Docker](https://docs.docker.com/engine/installation/)
+- [Docker Compose](https://docs.docker.com/compose/install/)
 
 ## Installation
 1. ```cd /path/to/working/directory```
-1. ```git clone --recursive git@github.com:qwemaze/assoicompose.git```
-1. create path ```postgres/data/```
-1. create path ```mongo/data/```
+1. ```git clone --recursive https://github.com/qwemaze/assoicompose.git```
 
 ## Import db
 1. ```cd /path/to/assoicompose```
