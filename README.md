@@ -7,7 +7,7 @@
 
 ## Installation
 1. ```cd /path/to/working/directory```
-1. ```git clone --recursive https://github.com/qwemaze/assoicompose.git```
+1. ```git clone --recursive https://github.com/mvigura/assoicompose.git```
 
 ## Up
 1. ```cd /path/to/assoicompose```
